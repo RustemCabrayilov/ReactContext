@@ -1,13 +1,17 @@
-import SiteContext from './Context/SiteContext'
-import { useContext } from "react"
-
+import {useSite} from './Context'
 function SwitchLanguage(){
-const {language,setLanguage}=useContext(SiteContext)
+const {language,dispatch}=useSite()
+const changeLanguage=()=>{
+dispatch({
+  type:'Set_language',
+  value:language==='tr'?'en':'tr'
+})
+}
   return(
 
   <>
     Current language {language} <br/>
-    <button onClick={()=>setLanguage(language==='tr'?'en':'tr')}>Change Language</button>
+    <button onClick={changeLanguage}>Change Language</button>
   </>
 )
 }

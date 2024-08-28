@@ -1,12 +1,10 @@
 import { useContext, useReducer } from "react";
 import { createContext } from "react";
-import SiteReducer from "../Reducer/SiteReducer";
+import AuthReducer from '../Reducer/AuthReducer'
 const Context = createContext();
 const Provider = ({ children }) => {
-
-  const [state, dispatch] = useReducer(SiteReducer, {
-    theme: "light",
-    language: "tr",
+  const [state, dispatch] = useReducer(AuthReducer, {
+  user:false
   });
   const data = {
     ...state,
@@ -18,5 +16,5 @@ const Provider = ({ children }) => {
     </>
   );
 };
-export const useSite = () => useContext(Context);
+export const useAuth = () => useContext(Context);
 export default Provider;

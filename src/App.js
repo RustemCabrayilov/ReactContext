@@ -1,22 +1,14 @@
-import {useState } from "react";
 import Home from "./Home";
-import SiteContext from './Context/SiteContext'
+import SiteContext from "./Context/SiteContext";
+import AuthContext from "./Context/AuthContext";
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  const [language, setLanguage] = useState('tr');
-  const data={
-    theme,
-    setTheme,
-    language,
-    setLanguage
-}
   return (
-    
-     <SiteContext.Provider value={data}>
-       <Home />
-      </SiteContext.Provider>
-   
+    <SiteContext>
+      <AuthContext>
+        <Home />
+      </AuthContext>
+    </SiteContext>
   );
 }
 

@@ -1,12 +1,17 @@
-import SiteContext from './Context/SiteContext'
-import { useContext } from "react"
+import { useSite} from './Context'
 function SwitchTheme(){
-  const {theme,setTheme}=useContext(SiteContext)
+  const {theme,dispatch}=useSite()
+  const changeTheme=()=>{
+    dispatch({
+      type:'Set_theme',
+      value:theme==='light'?'dark':'light'
+    })
+  }
   return(
 
   <>
     Current language {theme} <br/>
-    <button onClick={()=>{setTheme(theme==='light'?'dark':'light')}}>Change theme</button>
+    <button onClick={changeTheme}>Change theme</button>
   </>
   )
   }
